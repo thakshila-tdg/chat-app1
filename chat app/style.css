@@ -1,0 +1,97 @@
+
+body {
+    background-image: url('gettyimages-1469875556-640x640.jpg'); /* Replace with your image URL */
+    background-size: cover;
+    background-position: center;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    position: relative; /* Ensures the positioning of the centered image works */
+}
+
+/* Style for the centered bot girl image */
+.bot-girl {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 300px; /* Adjust based on the image size */
+    max-height: 400px; /* Adjust based on the image size */
+    z-index: 10; /* Ensure the image stays above the background */
+}
+
+.chat-container {
+    width: 80%;
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(160, 23, 23, 0.1);
+}
+
+.chat-box {
+    max-height: 200px; /* Adjusted the height */
+    height: auto;
+    overflow-y: auto;
+    margin-bottom: 20px;
+}
+
+.message {
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    max-width: 80%;
+}
+
+.user-message {
+    background-color: #15a115;
+    align-self: flex-end;
+    text-align: right;
+}
+
+.bot-message {
+    background-color: #f0f0f0;
+}
+
+
+.input-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+input {
+    width: 80%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+.short-hr {
+    width: 32%;      /* Set the width to your desired length */
+    margin-left: 0;  /* Align it to the left */
+}
+/* Styling for the hint text inside a black box */
+.hint {
+    background-color: #000; /* Black background */
+    color: #fff; /* White text color */
+    padding: 10px; /* Some space around the text */
+    border-radius: 5px; /* Rounded corners */
+    display: inline-block; /* Ensure the box wraps around the hint text */
+    font-size: 16px; /* Adjust font size as needed */
+    margin-top: 5px; /* Space between the question and the hint */
+}
+

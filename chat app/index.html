@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questions List</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+       
+        /* General styling for the body */
+        body {
+            background-color: #282c34;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            display: flex;
+            justify-content: space-between; /* Aligns items on both sides */
+            padding: 20px;
+        }
+
+        /* Left side container for questions */
+        #questionsContainer {
+            width: 60%; /* Takes up 60% of the page width */
+            padding-right: 20px;
+            text-align: left;
+        }
+
+        /* Styling for the questions list */
+        ul {
+            list-style-type: none; /* Removes default bullets */
+            padding: 0;
+        }
+
+        li {
+            font-size: 18px; /* Smaller font size */
+            margin: 10px 0;
+        }
+
+        h1 {
+            font-size: 24px; /* Reduced font size for the title */
+            color: white;    
+        }
+
+        /* Styling for the hints */
+        p {
+            font-size: 16px; /* Slightly smaller font size for hints */
+            color: lightgray; 
+        }
+
+        /* Right side container for chat box */
+        .chat-container {
+            width: 35%; /* Takes up 35% of the page width */
+            background-color: #3a3f47;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .game-container, .score-container {
+            margin-top: 20px;
+        }
+
+        .score-container h2 {
+            font-size: 20px;
+            color: white;
+        }
+
+        .game-board {
+            flex: 1;
+            background-color: #4a4e58;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+
+/* Style for the centered bot girl image */
+.bot-girl {
+    position: absolute;
+    border-radius: 10px; /* Rounded corners for the border */
+    border: 5px solid #fff; /* White border with a thickness of 5px */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 300px; /* Adjust based on the image size */
+    height: 500px; /* Set the height to your desired value */
+    object-fit: contain; /* Ensures the image scales correctly without distortion */
+    z-index: 10; /* Ensure the image stays above the background */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover effect */
+}
+
+/* Hover effect for the bot girl image */
+.bot-girl:hover {
+    transform: translate(-50%, -50%) scale(1.1); /* Slightly enlarges the image */
+    box-shadow: 0px 0px 20px rgba(235, 114, 2, 0.7); /* Adds a shadow effect when hovering */
+}
+
+    </style>
+</head>
+
+
+    <div id="questionsContainer">
+        <h1>Ask these questions from Tashi</h1>
+        <hr class="short-hr">
+
+        <ul>
+            <div class="question-container">
+                <div class="question">1. What is the capital of France?</div>
+                <p class="hint">Hint: It is also known as the city of lights.</p>
+                
+            </div>
+        
+            <div class="question-container">
+                <div class="question">2. What is the square root of 16?</div>
+                <p class="hint">Hint: It is a number between 3 and 5.</p>
+                
+            </div>
+        
+            <div class="question-container">
+                <div class="question">3. Who wrote 'Romeo and Juliet'?</div>
+                <p class="hint">Hint: He is an English playwright and poet.</p>
+                
+            </div>
+        
+            <div class="question-container">
+                <div class="question">4.What is the chemical symbol for water?</div>
+                <p class="hint">Hint: It is made of two elements, hydrogen and oxygen.</p>
+                
+            </div>
+        
+            <div class="question-container">
+                <div class="question">5.Who painted the Mona Lisa?</div>
+                <p class="hint">Hint: He is known for his contributions to art and science.</p>
+                
+            </div>
+        
+            <div class="question-container">
+                <div class="question">6.What is the fastest land animal?</div>
+                <p class="hint">Hint: It can run at speeds of up to 60 mph.</p>
+               
+            </div>
+        
+            <div class="question-container">
+                <div class="question">7.What is the square of 7?</div>
+                <p class="hint">Hint: It is a number between 48 and 50.</p>
+                
+            </div>
+        
+            <div class="question-container">
+                <div class="question">8.Who is the first president of the United States?</div>
+                <p class="hint">Hint: He is known as the Father of the Nation.</p>
+                
+            </div>
+        
+            <div class="question-container">
+                <div class="question">9.What is the largest planet in our solar system?</div>
+                <p class="hint">Hint: It is a gas giant.</p>
+                
+            </div>
+        </ul>
+    </div>
+
+    <div class="chat-container">
+        <div class="chat-box" id="chatBox">
+            <div class="message bot-message">
+                <p>Hello! I'm Tashi. How can I assist you today?</p>
+            </div>
+        </div>
+        <div class="input-container">
+            <input type="text" id="userInput" placeholder="Type your message..." />
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+
+    <script>
+        function showAnswer(questionId) {
+            const answers = {
+                'capitalOfFrance': 'The capital of France is Paris.',
+                'squareRootOf16': 'The square root of 16 is 4.',
+                'romeoAndJuliet': 'William Shakespeare wrote "Romeo and Juliet".',
+                'chemicalSymbolForWater': 'The chemical symbol for water is H₂O.',
+                'monaLisaPainter': 'The Mona Lisa was painted by Leonardo da Vinci.',
+                'fastestLandAnimal': 'The fastest land animal is the Cheetah.',
+                'squareOfSeven': 'The square of 7 is 49.',
+                'firstPresidentUSA': 'The first president of the United States was George Washington.',
+                'largestPlanet': 'The largest planet in our solar system is Jupiter.'
+            };
+
+            document.getElementById(questionId).innerText = answers[questionId];
+        }
+
+        function sendMessage() {
+            const userInput = document.getElementById("userInput").value;
+            const chatBox = document.getElementById("chatBox");
+
+            if (userInput.trim() !== "") {
+                // Create user message element
+                const userMessage = document.createElement("div");
+                userMessage.classList.add("message", "user-message");
+                userMessage.innerHTML = `<p>${userInput}</p>`;
+                chatBox.appendChild(userMessage);
+                document.getElementById("userInput").value = ""; // Clear input box
+
+                // Create bot response element
+                const botMessage = document.createElement("div");
+                botMessage.classList.add("message", "bot-message");
+
+                // Define possible answers for user input
+                let response;
+                switch (userInput.toLowerCase().trim()) {
+                    case "what is the capital of france?":
+                        response = "The capital of France is Paris.";
+                        break;
+                    case "what is the square root of 16?":
+                        response = "The square root of 16 is 4.";
+                        break;
+                    case "who wrote 'romeo and juliet'?":
+                        response = "William Shakespeare wrote 'Romeo and Juliet'.";
+                        break;
+                    case "what is the chemical symbol for water?":
+                        response = "The chemical symbol for water is H₂O.";
+                        break;
+                    case "who painted the mona lisa?":
+                        response = "The Mona Lisa was painted by Leonardo da Vinci.";
+                        break;
+                    case "what is the fastest land animal?":
+                        response = "The fastest land animal is the Cheetah.";
+                        break;
+                    case "what is the square of 7?":
+                        response = "The square of 7 is 49.";
+                        break;
+                    case "who is the first president of the united states?":
+                        response = "The first president of the United States was George Washington.";
+                        break;
+                    case "what is the largest planet in our solar system?":
+                        response = "The largest planet in our solar system is Jupiter.";
+                        break;
+                    default:
+                        response = "Sorry, I don't know the answer to that.";
+                }
+
+                // Set bot message with the response
+                botMessage.innerHTML = `<p>${response}</p>`;
+                chatBox.appendChild(botMessage);
+
+                // Scroll to the bottom of the chat box
+                chatBox.scrollTop = chatBox.scrollHeight;
+            }
+        }
+    </script>
+
+</body>
+</html>
